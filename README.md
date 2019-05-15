@@ -18,6 +18,12 @@ R benchmark copied from https://mac.r-project.org/benchmarks/bench.R
 * Native R: `R --no-save < benchmark.R > raw_R_result.txt`
 * Graal FastR: `$GRAALVM_HOME/bin/R --no-save < benchmark.R > fastR_result.txt` 
 
+## Benchmark 2
+R benchmark copied from https://mac.r-project.org/benchmarks/bench.R
+
+* Native R: `R --no-save < benchmark_v2.R > raw_R_result_v2.txt`
+* Graal FastR: `$GRAALVM_HOME/bin/R --no-save < benchmark_v2.R > fastR_result_v2.txt` 
+
 ## Machine Details
 
 * MacBook Pro

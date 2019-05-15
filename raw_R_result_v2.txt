@@ -1,0 +1,1050 @@
+
+R version 3.6.0 (2019-04-26) -- "Planting of a Tree"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # Source: https://mac.r-project.org/benchmarks/bench.R
+> for (i in 1 : 20) {
++     hilbert <- function(n) 1 / (outer(seq(n), seq(n), "+") - 1)
++     print("hilbert n=500")
++     print(system.time(eigen(hilbert(500))))
++     print(system.time(eigen(hilbert(500))))
++     print(system.time(eigen(hilbert(500))))
++     print("hilbert n=1000")
++     print(system.time(eigen(hilbert(1000))))
++     print(system.time(eigen(hilbert(1000))))
++     print(system.time(eigen(hilbert(1000))))
++     print("sort n=6")
++     print(system.time(sort(rnorm(10 ^ 6))))
++     print(system.time(sort(rnorm(10 ^ 6))))
++     print(system.time(sort(rnorm(10 ^ 6))))
++     print("sort n=7")
++     print(system.time(sort(rnorm(10 ^ 7))))
++     print(system.time(sort(rnorm(10 ^ 7))))
++     print(system.time(sort(rnorm(10 ^ 7))))
++     # loess
++     loess.me <- function(n) {
++         print(paste("loess n=", as.character(n), sep = ""))
++         for (i in 1 : 5) {
++             x <- rnorm(10 ^ n); y <- rnorm(10 ^ n); z <- rnorm(10 ^ n)
++             print(system.time(loess(z ~ x + y)))
++         }
++     }
++     loess.me(3)
++     loess.me(4)
++ }
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.166   0.009   0.182 
+   user  system elapsed 
+  0.150   0.001   0.151 
+   user  system elapsed 
+  0.149   0.001   0.150 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.212   0.026   1.239 
+   user  system elapsed 
+  1.223   0.003   1.226 
+   user  system elapsed 
+  1.227   0.003   1.231 
+[1] "sort n=6"
+   user  system elapsed 
+  0.129   0.002   0.134 
+   user  system elapsed 
+  0.125   0.000   0.126 
+   user  system elapsed 
+  0.129   0.001   0.129 
+[1] "sort n=7"
+   user  system elapsed 
+  1.716   0.128   1.847 
+   user  system elapsed 
+  1.498   0.010   1.509 
+   user  system elapsed 
+  1.650   0.017   1.670 
+[1] "loess n=3"
+   user  system elapsed 
+  0.038   0.004   0.044 
+   user  system elapsed 
+  0.037   0.000   0.037 
+   user  system elapsed 
+  0.039   0.000   0.039 
+   user  system elapsed 
+  0.040   0.000   0.041 
+   user  system elapsed 
+  0.036   0.000   0.037 
+[1] "loess n=4"
+   user  system elapsed 
+  3.427   0.011   3.459 
+   user  system elapsed 
+  3.277   0.005   3.284 
+   user  system elapsed 
+  3.198   0.002   3.200 
+   user  system elapsed 
+  3.253   0.004   3.259 
+   user  system elapsed 
+  3.374   0.009   3.389 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.173   0.009   0.182 
+   user  system elapsed 
+  0.159   0.001   0.160 
+   user  system elapsed 
+  0.155   0.001   0.155 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.291   0.038   1.331 
+   user  system elapsed 
+  1.344   0.006   1.352 
+   user  system elapsed 
+  1.243   0.003   1.247 
+[1] "sort n=6"
+   user  system elapsed 
+  0.127   0.001   0.128 
+   user  system elapsed 
+  0.133   0.001   0.134 
+   user  system elapsed 
+  0.148   0.002   0.150 
+[1] "sort n=7"
+   user  system elapsed 
+  1.694   0.116   1.812 
+   user  system elapsed 
+  1.434   0.007   1.441 
+   user  system elapsed 
+  1.490   0.008   1.498 
+[1] "loess n=3"
+   user  system elapsed 
+  0.035   0.003   0.039 
+   user  system elapsed 
+  0.036   0.000   0.036 
+   user  system elapsed 
+  0.035   0.000   0.036 
+   user  system elapsed 
+  0.035   0.000   0.036 
+   user  system elapsed 
+  0.035   0.000   0.035 
+[1] "loess n=4"
+   user  system elapsed 
+  3.261   0.004   3.267 
+   user  system elapsed 
+  3.204   0.002   3.207 
+   user  system elapsed 
+  3.203   0.002   3.206 
+   user  system elapsed 
+  3.212   0.002   3.214 
+   user  system elapsed 
+  3.304   0.004   3.312 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.160   0.007   0.167 
+   user  system elapsed 
+  0.153   0.000   0.154 
+   user  system elapsed 
+  0.156   0.001   0.157 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.320   0.040   1.362 
+   user  system elapsed 
+  1.287   0.004   1.294 
+   user  system elapsed 
+  1.294   0.005   1.300 
+[1] "sort n=6"
+   user  system elapsed 
+  0.129   0.001   0.130 
+   user  system elapsed 
+  0.125   0.001   0.126 
+   user  system elapsed 
+  0.128   0.001   0.128 
+[1] "sort n=7"
+   user  system elapsed 
+  1.838   0.120   1.960 
+   user  system elapsed 
+  1.605   0.014   1.625 
+   user  system elapsed 
+  1.647   0.017   1.666 
+[1] "loess n=3"
+   user  system elapsed 
+  0.037   0.004   0.041 
+   user  system elapsed 
+  0.035   0.000   0.034 
+   user  system elapsed 
+  0.035   0.000   0.035 
+   user  system elapsed 
+  0.034   0.000   0.035 
+   user  system elapsed 
+  0.034   0.000   0.034 
+[1] "loess n=4"
+   user  system elapsed 
+  3.375   0.008   3.386 
+   user  system elapsed 
+  3.365   0.008   3.376 
+   user  system elapsed 
+  3.357   0.008   3.369 
+   user  system elapsed 
+  3.390   0.009   3.408 
+   user  system elapsed 
+  3.272   0.003   3.276 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.180   0.008   0.188 
+   user  system elapsed 
+  0.177   0.001   0.179 
+   user  system elapsed 
+  0.156   0.001   0.157 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.268   0.027   1.296 
+   user  system elapsed 
+  1.248   0.004   1.253 
+   user  system elapsed 
+  1.220   0.003   1.223 
+[1] "sort n=6"
+   user  system elapsed 
+  0.129   0.001   0.130 
+   user  system elapsed 
+  0.129   0.001   0.129 
+   user  system elapsed 
+  0.127   0.001   0.128 
+[1] "sort n=7"
+   user  system elapsed 
+  1.796   0.119   1.917 
+   user  system elapsed 
+  1.529   0.010   1.541 
+   user  system elapsed 
+  1.685   0.016   1.705 
+[1] "loess n=3"
+   user  system elapsed 
+  0.035   0.003   0.037 
+   user  system elapsed 
+  0.036   0.000   0.035 
+   user  system elapsed 
+  0.035   0.000   0.035 
+   user  system elapsed 
+  0.035   0.000   0.035 
+   user  system elapsed 
+  0.036   0.000   0.036 
+[1] "loess n=4"
+   user  system elapsed 
+  3.359   0.008   3.370 
+   user  system elapsed 
+  3.452   0.011   3.470 
+   user  system elapsed 
+  3.314   0.006   3.323 
+   user  system elapsed 
+  3.236   0.003   3.241 
+   user  system elapsed 
+  3.325   0.005   3.333 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.158   0.007   0.166 
+   user  system elapsed 
+  0.161   0.001   0.162 
+   user  system elapsed 
+  0.190   0.004   0.194 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.299   0.048   1.349 
+   user  system elapsed 
+  1.228   0.004   1.232 
+   user  system elapsed 
+  1.194   0.002   1.197 
+[1] "sort n=6"
+   user  system elapsed 
+  0.128   0.002   0.129 
+   user  system elapsed 
+  0.125   0.001   0.126 
+   user  system elapsed 
+  0.125   0.000   0.126 
+[1] "sort n=7"
+   user  system elapsed 
+   1.58    0.10    1.68 
+   user  system elapsed 
+  1.501   0.039   1.541 
+   user  system elapsed 
+  1.570   0.016   1.588 
+[1] "loess n=3"
+   user  system elapsed 
+  0.038   0.001   0.039 
+   user  system elapsed 
+  0.037   0.000   0.037 
+   user  system elapsed 
+  0.037   0.000   0.037 
+   user  system elapsed 
+  0.041   0.001   0.041 
+   user  system elapsed 
+  0.038   0.001   0.039 
+[1] "loess n=4"
+   user  system elapsed 
+  3.234   0.004   3.239 
+   user  system elapsed 
+  3.206   0.002   3.208 
+   user  system elapsed 
+  3.206   0.002   3.210 
+   user  system elapsed 
+  3.211   0.002   3.215 
+   user  system elapsed 
+  3.211   0.002   3.215 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.156   0.006   0.163 
+   user  system elapsed 
+  0.149   0.001   0.149 
+   user  system elapsed 
+  0.149   0.001   0.150 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.183   0.024   1.208 
+   user  system elapsed 
+  1.183   0.002   1.185 
+   user  system elapsed 
+  1.172   0.002   1.174 
+[1] "sort n=6"
+   user  system elapsed 
+  0.126   0.001   0.127 
+   user  system elapsed 
+  0.125   0.001   0.125 
+   user  system elapsed 
+  0.130   0.001   0.131 
+[1] "sort n=7"
+   user  system elapsed 
+  1.573   0.099   1.673 
+   user  system elapsed 
+  1.438   0.007   1.447 
+   user  system elapsed 
+  1.480   0.008   1.488 
+[1] "loess n=3"
+   user  system elapsed 
+  0.035   0.003   0.038 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.034   0.000   0.034 
+[1] "loess n=4"
+   user  system elapsed 
+  3.214   0.002   3.218 
+   user  system elapsed 
+  3.195   0.002   3.199 
+   user  system elapsed 
+  3.211   0.003   3.213 
+   user  system elapsed 
+  3.201   0.002   3.204 
+   user  system elapsed 
+  3.225   0.002   3.228 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.163   0.006   0.168 
+   user  system elapsed 
+  0.152   0.000   0.153 
+   user  system elapsed 
+  0.149   0.000   0.150 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.193   0.027   1.220 
+   user  system elapsed 
+  1.183   0.001   1.186 
+   user  system elapsed 
+  1.166   0.002   1.169 
+[1] "sort n=6"
+   user  system elapsed 
+  0.127   0.002   0.128 
+   user  system elapsed 
+  0.127   0.001   0.128 
+   user  system elapsed 
+  0.124   0.001   0.124 
+[1] "sort n=7"
+   user  system elapsed 
+  1.573   0.101   1.674 
+   user  system elapsed 
+  1.437   0.008   1.445 
+   user  system elapsed 
+  1.450   0.007   1.457 
+[1] "loess n=3"
+   user  system elapsed 
+  0.034   0.003   0.037 
+   user  system elapsed 
+  0.039   0.000   0.039 
+   user  system elapsed 
+  0.034   0.000   0.035 
+   user  system elapsed 
+  0.034   0.000   0.035 
+   user  system elapsed 
+  0.034   0.000   0.034 
+[1] "loess n=4"
+   user  system elapsed 
+  3.218   0.003   3.221 
+   user  system elapsed 
+  3.221   0.003   3.226 
+   user  system elapsed 
+  3.200   0.003   3.203 
+   user  system elapsed 
+  3.170   0.002   3.172 
+   user  system elapsed 
+  3.212   0.002   3.216 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.158   0.006   0.165 
+   user  system elapsed 
+  0.150   0.001   0.150 
+   user  system elapsed 
+  0.152   0.001   0.152 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.214   0.027   1.240 
+   user  system elapsed 
+  1.185   0.002   1.187 
+   user  system elapsed 
+  1.172   0.002   1.174 
+[1] "sort n=6"
+   user  system elapsed 
+  0.126   0.001   0.127 
+   user  system elapsed 
+  0.126   0.000   0.126 
+   user  system elapsed 
+  0.128   0.001   0.129 
+[1] "sort n=7"
+   user  system elapsed 
+  1.578   0.101   1.679 
+   user  system elapsed 
+  1.436   0.008   1.444 
+   user  system elapsed 
+  1.481   0.035   1.516 
+[1] "loess n=3"
+   user  system elapsed 
+  0.034   0.002   0.036 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.035   0.000   0.035 
+   user  system elapsed 
+  0.034   0.000   0.035 
+   user  system elapsed 
+  0.034   0.000   0.034 
+[1] "loess n=4"
+   user  system elapsed 
+  3.185   0.002   3.188 
+   user  system elapsed 
+  3.195   0.003   3.197 
+   user  system elapsed 
+  3.197   0.002   3.200 
+   user  system elapsed 
+  3.200   0.002   3.203 
+   user  system elapsed 
+  3.189   0.002   3.191 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.158   0.006   0.164 
+   user  system elapsed 
+  0.151   0.000   0.152 
+   user  system elapsed 
+   0.15    0.00    0.15 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.192   0.025   1.216 
+   user  system elapsed 
+  1.168   0.002   1.170 
+   user  system elapsed 
+  1.179   0.002   1.181 
+[1] "sort n=6"
+   user  system elapsed 
+  0.129   0.002   0.131 
+   user  system elapsed 
+  0.127   0.000   0.128 
+   user  system elapsed 
+  0.127   0.001   0.128 
+[1] "sort n=7"
+   user  system elapsed 
+  1.589   0.105   1.695 
+   user  system elapsed 
+  1.460   0.033   1.495 
+   user  system elapsed 
+  1.467   0.009   1.475 
+[1] "loess n=3"
+   user  system elapsed 
+  0.035   0.002   0.037 
+   user  system elapsed 
+  0.035   0.000   0.035 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.036   0.000   0.036 
+   user  system elapsed 
+  0.034   0.000   0.034 
+[1] "loess n=4"
+   user  system elapsed 
+  3.198   0.003   3.202 
+   user  system elapsed 
+  3.233   0.002   3.238 
+   user  system elapsed 
+  3.182   0.002   3.184 
+   user  system elapsed 
+  3.198   0.003   3.203 
+   user  system elapsed 
+  3.195   0.003   3.198 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.156   0.006   0.162 
+   user  system elapsed 
+   0.15    0.00    0.15 
+   user  system elapsed 
+  0.151   0.000   0.152 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.203   0.024   1.227 
+   user  system elapsed 
+  1.182   0.002   1.184 
+   user  system elapsed 
+  1.171   0.002   1.172 
+[1] "sort n=6"
+   user  system elapsed 
+  0.125   0.001   0.126 
+   user  system elapsed 
+  0.131   0.001   0.133 
+   user  system elapsed 
+  0.124   0.001   0.126 
+[1] "sort n=7"
+   user  system elapsed 
+  1.597   0.103   1.700 
+   user  system elapsed 
+  1.445   0.008   1.454 
+   user  system elapsed 
+  1.461   0.007   1.469 
+[1] "loess n=3"
+   user  system elapsed 
+  0.034   0.003   0.038 
+   user  system elapsed 
+  0.036   0.000   0.036 
+   user  system elapsed 
+  0.035   0.000   0.035 
+   user  system elapsed 
+  0.035   0.000   0.035 
+   user  system elapsed 
+  0.035   0.000   0.035 
+[1] "loess n=4"
+   user  system elapsed 
+  3.209   0.003   3.212 
+   user  system elapsed 
+  3.204   0.002   3.207 
+   user  system elapsed 
+  3.201   0.002   3.203 
+   user  system elapsed 
+  3.203   0.002   3.205 
+   user  system elapsed 
+  3.247   0.003   3.252 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.156   0.007   0.162 
+   user  system elapsed 
+   0.15    0.00    0.15 
+   user  system elapsed 
+  0.150   0.001   0.150 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.200   0.026   1.227 
+   user  system elapsed 
+  1.166   0.005   1.171 
+   user  system elapsed 
+  1.199   0.002   1.201 
+[1] "sort n=6"
+   user  system elapsed 
+  0.127   0.001   0.128 
+   user  system elapsed 
+  0.126   0.001   0.126 
+   user  system elapsed 
+  0.126   0.001   0.126 
+[1] "sort n=7"
+   user  system elapsed 
+  1.614   0.108   1.722 
+   user  system elapsed 
+  1.461   0.007   1.468 
+   user  system elapsed 
+  1.523   0.034   1.557 
+[1] "loess n=3"
+   user  system elapsed 
+  0.034   0.001   0.036 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.035   0.000   0.035 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.034   0.000   0.035 
+[1] "loess n=4"
+   user  system elapsed 
+  3.192   0.003   3.195 
+   user  system elapsed 
+  3.221   0.003   3.225 
+   user  system elapsed 
+  3.345   0.008   3.361 
+   user  system elapsed 
+  3.236   0.003   3.240 
+   user  system elapsed 
+  3.297   0.004   3.303 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.156   0.006   0.163 
+   user  system elapsed 
+  0.154   0.000   0.155 
+   user  system elapsed 
+   0.15    0.00    0.15 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.214   0.026   1.240 
+   user  system elapsed 
+  1.192   0.002   1.195 
+   user  system elapsed 
+  1.238   0.003   1.243 
+[1] "sort n=6"
+   user  system elapsed 
+  0.131   0.002   0.133 
+   user  system elapsed 
+  0.128   0.001   0.129 
+   user  system elapsed 
+  0.127   0.000   0.127 
+[1] "sort n=7"
+   user  system elapsed 
+  1.620   0.107   1.727 
+   user  system elapsed 
+  1.458   0.008   1.466 
+   user  system elapsed 
+  1.506   0.008   1.516 
+[1] "loess n=3"
+   user  system elapsed 
+  0.037   0.002   0.039 
+   user  system elapsed 
+  0.036   0.000   0.036 
+   user  system elapsed 
+  0.038   0.000   0.037 
+   user  system elapsed 
+  0.036   0.000   0.036 
+   user  system elapsed 
+  0.036   0.000   0.036 
+[1] "loess n=4"
+   user  system elapsed 
+  3.235   0.003   3.239 
+   user  system elapsed 
+  3.219   0.003   3.222 
+   user  system elapsed 
+  3.191   0.002   3.194 
+   user  system elapsed 
+  3.241   0.004   3.245 
+   user  system elapsed 
+  3.197   0.003   3.200 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.159   0.006   0.165 
+   user  system elapsed 
+  0.158   0.000   0.159 
+   user  system elapsed 
+  0.162   0.000   0.162 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.213   0.024   1.238 
+   user  system elapsed 
+  1.167   0.002   1.169 
+   user  system elapsed 
+  1.197   0.003   1.201 
+[1] "sort n=6"
+   user  system elapsed 
+  0.125   0.001   0.127 
+   user  system elapsed 
+  0.128   0.001   0.129 
+   user  system elapsed 
+  0.126   0.001   0.128 
+[1] "sort n=7"
+   user  system elapsed 
+  1.587   0.103   1.690 
+   user  system elapsed 
+  1.462   0.009   1.471 
+   user  system elapsed 
+  1.534   0.035   1.570 
+[1] "loess n=3"
+   user  system elapsed 
+  0.034   0.000   0.035 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.035   0.000   0.034 
+   user  system elapsed 
+  0.034   0.000   0.035 
+   user  system elapsed 
+  0.035   0.000   0.035 
+[1] "loess n=4"
+   user  system elapsed 
+  3.209   0.002   3.212 
+   user  system elapsed 
+  3.193   0.002   3.196 
+   user  system elapsed 
+  3.193   0.002   3.195 
+   user  system elapsed 
+  3.211   0.003   3.213 
+   user  system elapsed 
+  3.217   0.002   3.220 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.157   0.006   0.163 
+   user  system elapsed 
+  0.150   0.001   0.151 
+   user  system elapsed 
+  0.151   0.000   0.152 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.198   0.025   1.223 
+   user  system elapsed 
+  1.181   0.002   1.182 
+   user  system elapsed 
+  1.172   0.002   1.174 
+[1] "sort n=6"
+   user  system elapsed 
+  0.126   0.001   0.127 
+   user  system elapsed 
+  0.127   0.001   0.127 
+   user  system elapsed 
+  0.126   0.001   0.127 
+[1] "sort n=7"
+   user  system elapsed 
+  1.590   0.105   1.695 
+   user  system elapsed 
+  1.442   0.007   1.448 
+   user  system elapsed 
+  1.461   0.008   1.468 
+[1] "loess n=3"
+   user  system elapsed 
+  0.034   0.003   0.037 
+   user  system elapsed 
+  0.035   0.000   0.035 
+   user  system elapsed 
+  0.035   0.000   0.035 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.035   0.000   0.034 
+[1] "loess n=4"
+   user  system elapsed 
+  3.206   0.004   3.210 
+   user  system elapsed 
+  3.232   0.003   3.235 
+   user  system elapsed 
+  3.180   0.003   3.183 
+   user  system elapsed 
+  3.188   0.003   3.191 
+   user  system elapsed 
+  3.188   0.002   3.192 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.156   0.006   0.161 
+   user  system elapsed 
+   0.15    0.00    0.15 
+   user  system elapsed 
+  0.158   0.001   0.159 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.192   0.024   1.216 
+   user  system elapsed 
+  1.179   0.002   1.181 
+   user  system elapsed 
+  1.173   0.002   1.175 
+[1] "sort n=6"
+   user  system elapsed 
+  0.126   0.002   0.127 
+   user  system elapsed 
+  0.126   0.001   0.127 
+   user  system elapsed 
+  0.126   0.001   0.126 
+[1] "sort n=7"
+   user  system elapsed 
+  1.568   0.099   1.667 
+   user  system elapsed 
+  1.475   0.032   1.508 
+   user  system elapsed 
+  1.460   0.009   1.468 
+[1] "loess n=3"
+   user  system elapsed 
+  0.034   0.002   0.036 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.035   0.000   0.034 
+   user  system elapsed 
+  0.035   0.000   0.035 
+   user  system elapsed 
+  0.035   0.000   0.035 
+[1] "loess n=4"
+   user  system elapsed 
+  3.178   0.003   3.181 
+   user  system elapsed 
+  3.210   0.003   3.213 
+   user  system elapsed 
+  3.197   0.003   3.200 
+   user  system elapsed 
+  3.192   0.002   3.195 
+   user  system elapsed 
+  3.217   0.002   3.221 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.155   0.006   0.161 
+   user  system elapsed 
+  0.149   0.000   0.149 
+   user  system elapsed 
+  0.149   0.001   0.150 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.184   0.024   1.207 
+   user  system elapsed 
+  1.160   0.002   1.163 
+   user  system elapsed 
+  1.182   0.002   1.184 
+[1] "sort n=6"
+   user  system elapsed 
+  0.126   0.001   0.127 
+   user  system elapsed 
+  0.125   0.000   0.126 
+   user  system elapsed 
+  0.127   0.001   0.128 
+[1] "sort n=7"
+   user  system elapsed 
+  1.590   0.099   1.689 
+   user  system elapsed 
+  1.478   0.034   1.512 
+   user  system elapsed 
+  1.462   0.009   1.472 
+[1] "loess n=3"
+   user  system elapsed 
+  0.035   0.001   0.035 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.035   0.000   0.035 
+   user  system elapsed 
+  0.036   0.000   0.036 
+[1] "loess n=4"
+   user  system elapsed 
+  3.205   0.003   3.209 
+   user  system elapsed 
+  3.216   0.002   3.218 
+   user  system elapsed 
+  3.207   0.003   3.210 
+   user  system elapsed 
+  3.241   0.003   3.246 
+   user  system elapsed 
+  3.237   0.002   3.241 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.154   0.006   0.161 
+   user  system elapsed 
+  0.153   0.001   0.154 
+   user  system elapsed 
+  0.154   0.000   0.155 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.187   0.025   1.213 
+   user  system elapsed 
+  1.174   0.002   1.177 
+   user  system elapsed 
+  1.184   0.003   1.186 
+[1] "sort n=6"
+   user  system elapsed 
+  0.131   0.001   0.133 
+   user  system elapsed 
+  0.131   0.002   0.133 
+   user  system elapsed 
+  0.125   0.001   0.125 
+[1] "sort n=7"
+   user  system elapsed 
+  1.579   0.104   1.683 
+   user  system elapsed 
+  1.455   0.008   1.464 
+   user  system elapsed 
+  1.521   0.032   1.554 
+[1] "loess n=3"
+   user  system elapsed 
+  0.035   0.001   0.036 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.035   0.000   0.035 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.034   0.000   0.034 
+[1] "loess n=4"
+   user  system elapsed 
+  3.178   0.003   3.181 
+   user  system elapsed 
+  3.170   0.002   3.172 
+   user  system elapsed 
+  3.220   0.003   3.225 
+   user  system elapsed 
+  3.190   0.002   3.193 
+   user  system elapsed 
+  3.187   0.002   3.189 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.155   0.005   0.161 
+   user  system elapsed 
+  0.151   0.001   0.152 
+   user  system elapsed 
+  0.150   0.001   0.151 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.196   0.025   1.222 
+   user  system elapsed 
+  1.179   0.002   1.181 
+   user  system elapsed 
+  1.172   0.002   1.174 
+[1] "sort n=6"
+   user  system elapsed 
+  0.126   0.002   0.127 
+   user  system elapsed 
+  0.125   0.001   0.126 
+   user  system elapsed 
+  0.128   0.000   0.129 
+[1] "sort n=7"
+   user  system elapsed 
+  1.573   0.104   1.677 
+   user  system elapsed 
+  1.450   0.008   1.458 
+   user  system elapsed 
+  1.464   0.007   1.472 
+[1] "loess n=3"
+   user  system elapsed 
+  0.034   0.004   0.039 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.034   0.000   0.035 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.034   0.000   0.034 
+[1] "loess n=4"
+   user  system elapsed 
+  3.214   0.003   3.217 
+   user  system elapsed 
+  3.199   0.003   3.202 
+   user  system elapsed 
+  3.215   0.002   3.218 
+   user  system elapsed 
+  3.214   0.003   3.217 
+   user  system elapsed 
+  3.187   0.003   3.190 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.159   0.006   0.164 
+   user  system elapsed 
+  0.149   0.001   0.149 
+   user  system elapsed 
+  0.152   0.001   0.153 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.197   0.024   1.221 
+   user  system elapsed 
+  1.185   0.003   1.188 
+   user  system elapsed 
+  1.181   0.002   1.183 
+[1] "sort n=6"
+   user  system elapsed 
+  0.126   0.002   0.128 
+   user  system elapsed 
+  0.124   0.001   0.125 
+   user  system elapsed 
+  0.123   0.000   0.124 
+[1] "sort n=7"
+   user  system elapsed 
+  1.570   0.097   1.667 
+   user  system elapsed 
+  1.449   0.007   1.456 
+   user  system elapsed 
+  1.483   0.032   1.515 
+[1] "loess n=3"
+   user  system elapsed 
+  0.035   0.001   0.036 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.034   0.000   0.034 
+   user  system elapsed 
+  0.035   0.000   0.034 
+   user  system elapsed 
+  0.034   0.000   0.034 
+[1] "loess n=4"
+   user  system elapsed 
+  3.207   0.003   3.210 
+   user  system elapsed 
+  3.202   0.002   3.205 
+   user  system elapsed 
+  3.203   0.003   3.207 
+   user  system elapsed 
+  3.219   0.003   3.224 
+   user  system elapsed 
+  3.206   0.003   3.210 
+[1] "hilbert n=500"
+   user  system elapsed 
+  0.160   0.006   0.167 
+   user  system elapsed 
+  0.150   0.001   0.150 
+   user  system elapsed 
+  0.152   0.000   0.153 
+[1] "hilbert n=1000"
+   user  system elapsed 
+  1.221   0.026   1.247 
+   user  system elapsed 
+  1.176   0.002   1.178 
+   user  system elapsed 
+  1.170   0.002   1.172 
+[1] "sort n=6"
+   user  system elapsed 
+  0.127   0.001   0.128 
+   user  system elapsed 
+  0.127   0.000   0.128 
+   user  system elapsed 
+  0.130   0.001   0.130 
+[1] "sort n=7"
+   user  system elapsed 
+  1.601   0.099   1.701 
+   user  system elapsed 
+  1.459   0.032   1.491 
+   user  system elapsed 
+  1.535   0.008   1.544 
+[1] "loess n=3"
+   user  system elapsed 
+  0.035   0.002   0.037 
+   user  system elapsed 
+  0.034   0.000   0.035 
+   user  system elapsed 
+  0.035   0.000   0.035 
+   user  system elapsed 
+  0.037   0.000   0.037 
+   user  system elapsed 
+  0.037   0.000   0.038 
+[1] "loess n=4"
+   user  system elapsed 
+  3.228   0.004   3.234 
+   user  system elapsed 
+  3.188   0.002   3.190 
+   user  system elapsed 
+  3.183   0.002   3.186 
+   user  system elapsed 
+  3.207   0.002   3.210 
+   user  system elapsed 
+  3.201   0.003   3.204 
+> 

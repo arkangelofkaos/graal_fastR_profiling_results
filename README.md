@@ -1,2 +1,25 @@
-# graal_fastR_profiling_results
-Basic results of running a benchmark script against native R and Graal's FastR
+# FastR vs R - Profiling Results
+
+Basic performance test for 
+
+## Graal FastR
+* GraalVM CE 19.0.0 
+* FastR installed via `$GRAALVM_HOME/bin/gu install R`
+
+## Native R
+* v3.6.0
+* Installed from https://cran.ma.imperial.ac.uk/
+* https://cran.ma.imperial.ac.uk/bin/macosx/R-3.6.0.pkg
+
+## Benchmark
+R benchmark copied from https://mac.r-project.org/benchmarks/bench.R
+
+* Native R: `R --no-save < benchmark.R > raw_R_result.txt`
+* Graal FastR: `$GRAALVM_HOME/bin/R --no-save < benchmark.R > fastR_result.txt` 
+
+## Machine Details
+
+* MacBook Pro
+* macOS Mojave 10.14.4
+* Intel Core i7 2.2 GHz
+* 16GB 1600 MHz DDR3

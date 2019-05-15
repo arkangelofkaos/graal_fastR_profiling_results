@@ -1,0 +1,67 @@
+R version 3.5.1 (FastR)
+Copyright (c) 2013-19, Oracle and/or its affiliates
+Copyright (c) 1995-2018, The R Core Team
+Copyright (c) 2018 The R Foundation for Statistical Computing
+Copyright (c) 2012-4 Purdue University
+Copyright (c) 1997-2002, Makoto Matsumoto and Takuji Nishimura
+All rights reserved.
+
+FastR is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information.
+
+Type 'q()' to quit R.
+> > [1] "hilbert n=500"
+>    user  system elapsed
+  0.451   0.005   0.507
+>    user  system elapsed
+  0.277   0.003   0.282
+>    user  system elapsed
+  0.255   0.005   0.313
+> [1] "hilbert n=1000"
+>    user  system elapsed
+  1.412   0.009   1.426
+>    user  system elapsed
+  1.332   0.008   1.352
+>    user  system elapsed
+  1.305   0.007   1.319
+> [1] "sort n=6"
+>    user  system elapsed
+  1.234   0.008   1.253
+>    user  system elapsed
+  0.903   0.003   0.911
+>    user  system elapsed
+  0.739   0.002   0.765
+> [1] "sort n=7"
+>    user  system elapsed
+ 13.834   0.041  13.925
+>    user  system elapsed
+ 20.651   0.065  21.562
+>    user  system elapsed
+ 21.218   0.076  21.522
+> > + + + + + + > [1] "loess n=3"
+   user  system elapsed
+  1.483   0.034   1.854
+   user  system elapsed
+  0.115   0.001   0.174
+   user  system elapsed
+  0.091   0.000   0.162
+   user  system elapsed
+  0.094   0.001   0.194
+   user  system elapsed
+  0.088   0.001   0.152
+> [1] "loess n=4"
+   user  system elapsed
+  4.667   0.021   7.226
+   user  system elapsed
+  4.995   0.032   7.672
+   user  system elapsed
+  5.068   0.032   7.037
+   user  system elapsed
+  3.856   0.011   4.166
+   user  system elapsed
+  3.266   0.002   3.269
+>

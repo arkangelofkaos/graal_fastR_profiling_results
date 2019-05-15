@@ -1,6 +1,7 @@
 # FastR vs R - Profiling Results
 
 Basic performance test between standard R and Graal's FastR. Run on 2019-05-15
+Preliminary results point to FastR being slower than standard R for this benchmark.
 
 ## Graal FastR
 * GraalVM CE 19.0.0 

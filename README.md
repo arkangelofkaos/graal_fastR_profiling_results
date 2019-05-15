@@ -3,6 +3,11 @@
 Basic performance test between standard R and Graal's FastR. Run on 2019-05-15
 Preliminary results point to FastR being slower than standard R for this benchmark.
 
+Results with a warmup introduced are more interesting:
+* loess is comparable
+* hilbert is comparable
+* sort is still slower
+
 ## Graal FastR
 * GraalVM CE 19.0.0 
 * FastR installed via `$GRAALVM_HOME/bin/gu install R`
